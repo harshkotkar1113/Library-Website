@@ -1,5 +1,6 @@
 console.log("Hellow ,harsh");
 
+// Constructor
 function Book(name, author, type) {
 
     this.name = name;
@@ -8,11 +9,12 @@ function Book(name, author, type) {
 
 };
 
-
+// Display Constructor
 function Display() {
 
 }
 
+// Add methods to display prototype
 Display.prototype.add = function (book) {
     console.log('adding to UI')
     let tableBody = document.getElementById("tableBody")
@@ -24,12 +26,14 @@ Display.prototype.add = function (book) {
 
 }
 
+// Implement the clear function
 Display.prototype.clear = function () {
     let addBook1 = document.getElementById('libraryForm');
     addBook1.reset();
 
 }
 
+// Implement the validate function
 Display.prototype.validate = function (book) {
     if (book.name.length < 2 || book.author.length < 2) {
         return false
@@ -38,18 +42,24 @@ Display.prototype.validate = function (book) {
     }
 }
 
+
+// Implement the show function
 Display.prototype.show = function (type, displayMessage) {
     let message = document.getElementById('message');
     message.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
              ${displayMessage}
              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
              </div>`;
+             
     setTimeout(function () {
         message.innerHTML = ''
     }, 2000);
 
 }
 
+
+
+// Add submit event listener to libraryForm
 let addBook = document.getElementById("libraryForm");
 addBook.addEventListener('submit', libraryBookSumbited)
 
@@ -83,6 +93,8 @@ function libraryBookSumbited(e) {
         display.clear(book)
         display.show('success', 'Your book has been successfully added')
     } else {
+
+         // Show error to the user
         display.show('danger', 'Sorry! you can not add this book')
     }
 
