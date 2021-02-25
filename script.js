@@ -83,7 +83,7 @@ function libraryBookSumbited(e) {
         display.clear(book)
         display.show('success', 'Your book has been successfully added')
     } else {
-        display.show('danger', 'Your book has not added')
+        display.show('danger', 'Sorry! you can not add this book')
     }
 
 
